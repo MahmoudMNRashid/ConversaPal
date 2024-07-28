@@ -6,8 +6,7 @@ export const ioFunctions = {
   init: (httpServer) => {
     io = new Server(httpServer, {
       cors: {
-        origin: ["http://localhost:5173", "https://conversapal.vercel.app"],
-        methods: ["GET", "POST"],
+        origin: "*",
       },
     });
     return io;
