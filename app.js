@@ -6,9 +6,9 @@ import authRoutes from "./routes/auth.js";
 import messageRoutes from "./routes/message.js";
 import userRoutes from "./routes/user.js";
 import cors from "cors";
-
+import serverless from "serverless-http";
 import mongoose from "mongoose";
-import { app, server } from "./socket/socket.js";
+import { app } from "./socket/socket.js";
 
 dotenv.config();
 
@@ -46,13 +46,14 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message, data });
 });
 
-export const PORT = process.env.PORT || 8080;
+// Connect to MongoDB
 try {
   await mongoose.connect(
     `mongodb+srv://${process.env.MONGO_CONNECT_USER_NAME}:${process.env.MONGO_CONNECT_PASSWORD}@clusterrashid.qdwwmja.mongodb.net/${process.env.MONGO_CONNECT_DB}`
   );
-  server.listen(PORT);
-  console.log(`Connected to port ${PORT}`);
+  console.log(`Connected to MongoDB`);
 } catch (error) {
   throw error;
 }
+
+export const handler = serverless(app);
