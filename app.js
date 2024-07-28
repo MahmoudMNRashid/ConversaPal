@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import multer from "multer";
 import cookieParser from "cookie-parser";
-import authRoutes from "./routes/";
+import authRoutes from "./routes/auth.js";
 import messageRoutes from "./routes/message.js";
 import userRoutes from "./routes/user.js";
 import cors from "cors";
