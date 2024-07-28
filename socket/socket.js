@@ -5,7 +5,7 @@ import http from "http";
 export const app = express();
 export const server = http.createServer(app);
 export const io = new Server(server);
-
+//
 const userSocketMap = {}; // {userId: socketId}
 //every user has socket id
 export const getReceiverSocketId = (receiverId) => {
