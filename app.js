@@ -10,7 +10,7 @@ import userRoutes from "./routes/user.js";
 import cors from "cors";
 import { app } from "./socket/socket.js";
 dotenv.config();
-
+connect();
 //init multer
 export const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -37,5 +37,3 @@ app.use((error, req, res, next) => {
 
   res.status(status).json({ message, data });
 });
-
-connect();
