@@ -11,7 +11,7 @@ import { connect } from "./util/connect.js";
 import { allowCors } from "./util/help.js";
 
 const app = express();
-app.use(allowCors());
+
 dotenv.config();
 
 // init multer
@@ -44,7 +44,7 @@ app.use((error, req, res, next) => {
 
   res.status(status).json({ message, data });
 });
-
+app.use(allowCors());
 export const PORT = process.env.PORT || 8080;
 connect(app, PORT);
 const handler = app;
