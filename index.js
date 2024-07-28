@@ -29,14 +29,11 @@ app.use(express.json());
 // Middleware for parse requests cookies
 app.use(cookieParser());
 
-// List of allowed origins
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://conversapal-mahmoud-mn-rashids-projects.vercel.app",
-  // add other origins here
-];
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', // Frontend URL
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+}));
 
 // Middleware for auth
 app.use("/auth", authRoutes);
