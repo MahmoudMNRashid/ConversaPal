@@ -6,7 +6,9 @@ export const ioFunctions = {
   init: (httpServer) => {
     io = new Server(httpServer, {
       cors: {
-        origin: "*",
+        origin: "http://localhost:5173",
+
+        credentials: true,
       },
     });
     return io;
