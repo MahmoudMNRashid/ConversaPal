@@ -8,13 +8,9 @@ import userRoutes from "./routes/user.js";
 import cors from "cors";
 
 import { connect } from "./util/connect.js";
+import { allowCors } from "./util/help.js";
 
-// CORS configuration
-const corsOptions = {
-  origin: 'http://localhost:5173', // specify your frontend URL here
-  credentials: true, // enable credentials
-};
-app.use(cors(corsOptions));
+app.use(allowCors());
 const app = express();
 dotenv.config();
 
