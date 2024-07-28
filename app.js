@@ -2,13 +2,13 @@ import dotenv from "dotenv";
 import express from "express";
 import multer from "multer";
 import cookieParser from "cookie-parser";
-import serverless from "serverless-http";
 import authRoutes from "./routes/auth.js";
 import messageRoutes from "./routes/message.js";
 import userRoutes from "./routes/user.js";
 import cors from "cors";
-import { app, server } from "./socket/socket.js";
+
 import mongoose from "mongoose";
+import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 
@@ -56,4 +56,3 @@ try {
 } catch (error) {
   throw error;
 }
-
