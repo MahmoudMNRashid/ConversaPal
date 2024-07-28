@@ -10,8 +10,8 @@ import cors from "cors";
 import { connect } from "./util/connect.js";
 import { allowCors } from "./util/help.js";
 
-app.use(allowCors());
 const app = express();
+app.use(allowCors());
 dotenv.config();
 
 // init multer
