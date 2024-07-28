@@ -10,7 +10,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { ioFunctions } from "./socket/socket.js";
 
-const app = express();
+export const app = express();
 dotenv.config();
 
 // init multer
