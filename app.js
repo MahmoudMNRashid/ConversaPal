@@ -21,13 +21,7 @@ app.use(express.json());
 //Middleware for parse requests cookies
 app.use(cookieParser());
 //init cors
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true, //access-control-allow-credentials:true
-    optionSuccessStatus: 200,
-  })
-);
+app.use(cors());
 //Middleware for auth
 app.use("/auth", authRoutes);
 app.use("/message", messageRoutes);
