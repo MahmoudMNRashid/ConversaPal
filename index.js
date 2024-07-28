@@ -78,5 +78,5 @@ try {
 } catch (error) {
   throw error;
 }
-const handler = serverless(app);
+const handler = app;
 export default handler;
