@@ -8,8 +8,6 @@ import userRoutes from "./routes/user.js";
 import cors from "cors";
 
 import { connect } from "./util/connect.js";
-import { allowCors } from "./util/help.js";
-
 const app = express();
 
 dotenv.config();
