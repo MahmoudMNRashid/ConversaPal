@@ -9,22 +9,9 @@ import cors from "cors";
 
 import { connect } from "./util/connect.js";
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://conversapal.vercel.app",
-  // add other origins here
-];
-
 // CORS configuration
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Check if the request origin is in the allowed list or if it's undefined (for same-origin requests)
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: 'http://localhost:5173', // specify your frontend URL here
   credentials: true, // enable credentials
 };
 app.use(cors(corsOptions));
