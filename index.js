@@ -9,8 +9,25 @@ import cors from "cors";
 
 import { connect } from "./util/connect.js";
 
-// init cors
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://conversapal.vercel.app",
+  // add other origins here
+];
+
+// CORS configuration
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Check if the request origin is in the allowed list or if it's undefined (for same-origin requests)
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // enable credentials
+};
+app.use(cors(corsOptions));
 const app = express();
 dotenv.config();
 
