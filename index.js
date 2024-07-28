@@ -9,12 +9,13 @@ import cors from "cors";
 
 import mongoose from "mongoose";
 import { ioFunctions } from "./socket/socket.js";
+import serverless from "serverless-http";
 
-export const app = express();
+ const app = express();
 dotenv.config();
 
 // init multer
-export const storage = multer.memoryStorage();
+ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
@@ -77,3 +78,5 @@ try {
 } catch (error) {
   throw error;
 }
+const handler = serverless(app);
+export default handler;
