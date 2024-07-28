@@ -2,15 +2,15 @@ import dotenv from "dotenv";
 import express from "express";
 import multer from "multer";
 import cookieParser from "cookie-parser";
-///
-import { connect } from "./util/connect.js";
+
 import authRoutes from "./routes/auth.js";
 import messageRoutes from "./routes/message.js";
 import userRoutes from "./routes/user.js";
 import cors from "cors";
-import { app } from "./socket/socket.js";
+import { app, server } from "./socket/socket.js";
+import mongoose from "mongoose";
 dotenv.config();
-connect();
+
 //init multer
 export const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -37,3 +37,14 @@ app.use((error, req, res, next) => {
 
   res.status(status).json({ message, data });
 });
+
+export const PORT = process.env.PORT || 8080;
+try {
+  await mongoose.connect(
+    `mongodb+srv://${process.env.MONGO_CONNECT_USER_NAME}:${process.env.MONGO_CONNECT_PASSWORD}@clusterrashid.qdwwmja.mongodb.net/${process.env.MONGO_CONNECT_DB}`
+  );
+  server.listen(PORT);
+  console.log(`Connected to port ${PORT}`);
+} catch (error) {
+  throw error;
+}
