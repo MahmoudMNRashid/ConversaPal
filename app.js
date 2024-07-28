@@ -14,6 +14,7 @@ dotenv.config();
 //init multer
 export const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+app.get("/", (req, res) => res.send("Express on Vercel"));
 //Middleware for parse requests formData
 app.use(upload.single("file"));
 //Middleware for parse requests body(Json)
