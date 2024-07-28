@@ -2,12 +2,12 @@ import dotenv from "dotenv";
 import express from "express";
 import multer from "multer";
 import cookieParser from "cookie-parser";
-
-import authRoutes from "./routes/auth.js";
-import messageRoutes from "./routes/message.js";
-import userRoutes from "./routes/user.js";
+import serverless from "serverless-http";
+import authRoutes from "../routes/auth.js";
+import messageRoutes from "../routes/message.js";
+import userRoutes from "../routes/user.js";
 import cors from "cors";
-import { app, server } from "./socket/socket.js";
+import { app, server } from "../socket/socket.js";
 import mongoose from "mongoose";
 dotenv.config();
 
@@ -49,3 +49,5 @@ try {
 } catch (error) {
   throw error;
 }
+
+export const handler = serverless(app);
