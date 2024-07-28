@@ -7,9 +7,10 @@ import messageRoutes from "./routes/message.js";
 import userRoutes from "./routes/user.js";
 import cors from "cors";
 
-
 import { connect } from "./util/connect.js";
 
+// init cors
+app.use(cors());
 const app = express();
 dotenv.config();
 
@@ -27,9 +28,6 @@ app.use(express.json());
 
 // Middleware for parse requests cookies
 app.use(cookieParser());
-
-// init cors
-app.use(cors());
 
 // Middleware for auth
 app.use("/auth", authRoutes);
