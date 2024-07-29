@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://conversapal.vercel.app/", // Frontend URL
+    origin: "https://conversapal.vercel.app", // Frontend URL
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );
