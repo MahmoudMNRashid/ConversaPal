@@ -8,6 +8,7 @@ import userRoutes from "./routes/user.js";
 import cors from "cors";
 
 import { connect } from "./util/connect.js";
+import { insertFakeUsers } from "./util/test.js";
 const app = express();
 
 dotenv.config();
@@ -16,7 +17,9 @@ dotenv.config();
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", (req, res) => {
+  res.send("hello");
+});
 
 // Middleware for parse requests formData
 app.use(upload.single("file"));
@@ -27,11 +30,12 @@ app.use(express.json());
 // Middleware for parse requests cookies
 app.use(cookieParser());
 
-
-app.use(cors({
-  origin: 'http://localhost:5173', // Frontend URL
-  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-}));
+app.use(
+  cors({
+    origin: "https://conversapal.vercel.app/", // Frontend URL
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  })
+);
 
 // Middleware for auth
 app.use("/auth", authRoutes);

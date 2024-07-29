@@ -4,7 +4,10 @@ import { validationResult } from "express-validator";
 //
 import User from "../models/user.js";
 import { createError } from "../util/errors.js";
-import { generateTokenAndSetCookie } from "../util/help.js";
+import {
+  generateRandomColor,
+  generateTokenAndSetCookie,
+} from "../util/help.js";
 
 export const signup = async (req, res, next) => {
   const { fullName, userName, password, confirmPassword, gender } = req.body;
@@ -27,7 +30,7 @@ export const signup = async (req, res, next) => {
     // HASH PASSWORD
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const logo = `https://avatar.iran.liara.run/username?username=${fullName}`;
+    const logo = `https://avatar.iran.liara.run/username?username=${fullName}&background=${generateRandomColor()}`;
 
     const newUser = new User({
       fullName,
