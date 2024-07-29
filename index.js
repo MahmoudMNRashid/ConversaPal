@@ -8,7 +8,7 @@ import userRoutes from "./routes/user.js";
 import cors from "cors";
 
 import { connect } from "./util/connect.js";
-import { insertFakeUsers } from "./util/test.js";
+
 const app = express();
 
 dotenv.config();
